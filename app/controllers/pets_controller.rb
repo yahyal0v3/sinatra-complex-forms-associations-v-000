@@ -9,8 +9,9 @@ class PetsController < ApplicationController
     erb :'/pets/new'
   end
 
-
-binding.pry    @pet = Pet.create(params[pet])
+  post '/pets' do 
+    binding.pry
+    @pet = Pet.create(params[pet])
     @pet.owners << Owner.create(params[owner]) unless params[owner].empty?
     redirect to "pets/#{@pet.id}"
   end
